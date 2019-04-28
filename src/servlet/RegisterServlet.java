@@ -3,6 +3,7 @@ package servlet;
 import domain.User;
 import org.apache.commons.beanutils.BeanUtils;
 import service.UserService;
+import utils.MD5Utils;
 import utils.UUIDUtils;
 
 import javax.servlet.ServletException;
@@ -30,6 +31,8 @@ public class RegisterServlet extends HttpServlet {
         // 密码
         String userpassword = request.getParameter("userpassword");
 
+
+
         if(username == null || useremail == null || userpassword == null){
             request.setAttribute("msg","有必须填的数据为空");
             request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
@@ -38,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
         username = new String(username.getBytes("iso-8859-1"), "utf-8");
         System.out.println("用户名："+username);
         System.out.println("邮箱："+useremail);
-        System.out.println("密码："+userpassword);
+
 
 
         //调用service
@@ -46,6 +49,10 @@ public class RegisterServlet extends HttpServlet {
         try {
 
             BeanUtils.populate(u, request.getParameterMap());
+
+            String upwd = u.getUserpassword();
+            u.setUserpassword(MD5Utils.md5(upwd));
+            System.out.println("mima："+upwd);
 
             //给用户创建一个id
             u.setId(UUIDUtils.getId());

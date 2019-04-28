@@ -4,6 +4,7 @@ import dao.UserDao;
 import domain.User;
 
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 
 public class UserService {
     public void rigisterService(User u) throws SQLException {

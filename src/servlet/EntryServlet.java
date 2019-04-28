@@ -2,6 +2,7 @@ package servlet;
 
 import domain.User;
 import service.UserService;
+import utils.MD5Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ public class EntryServlet extends HttpServlet {
 
         //获取参数
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String password = MD5Utils.md5(request.getParameter("password"));
 
 
         //判断username或者userpassword是否为空

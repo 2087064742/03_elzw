@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="<%=path %>/styles/responsive.css">
   </head>
   <body>
-  <div class="super_container">
+  <div class="super_container" onload="">
 
     <!-- Header -->
 
@@ -34,10 +34,11 @@
             <div class="header_content d-flex flex-row align-items-center justify-content-start">
               <div class="logo"><label style="font-size:60px;font-family: 微软雅黑">乡土<span>文化</span></label></div>
               <c:if test="${empty user}"><div class="join_button ml-auto"><a href="${pageContext.request.contextPath}/jsp/entry.jsp">加入我们！</a></div></c:if>
-              <c:if test="${not empty user}"><div class="join_button ml-auto"><a href="#">欢迎回来: ${user.username}</a></div><a href="/">退出登录</a></c:if>
+              <c:if test="${not empty user}"><div style="margin-left: 65%"><span class="label label-warning">欢迎回来: ${user.username}</span><p><a href="${pageContext.request.contextPath}/user">退出登录</a></p></c:if></div>
             </div>
           </div>
         </div>
+      </div>
     </header>
 
     <!-- Home -->
@@ -48,7 +49,28 @@
       <div class="home_slider_container">
         <div class="owl-carousel owl-theme home_slider">
 
-          <!-- Slide -->
+            <c:forEach items="${i}" var="p">
+                <div class="owl-item">
+                    <div class="background_image" style="background-image:url(${pageContext.request.contextPath}${p.index_bj})"></div>
+                    <div class="home_content_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="home_content">
+                                        <div class="home_title"><h1>${p.title}</h1></div>
+                                        <div class="home_text">
+                                            <p>${p.subhead}</p>
+                                        </div>
+                                        <div class="button home_button"><a href="${pageContext.request.contextPath}/jsp/about.jsp">${p.btn_txt}</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+
+        <%--  <!-- Slide -->
           <div class="owl-item">
             <div class="background_image" style="background-image:url(${pageContext.request.contextPath}/images/1.jpg)"></div>
             <div class="home_content_container">
@@ -106,7 +128,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>--%>
 
 
 
