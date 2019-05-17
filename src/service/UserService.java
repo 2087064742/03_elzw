@@ -15,11 +15,11 @@ public class UserService {
     public User entryService(String username, String password) {
         User user = null;
         try {
-            return new UserDao().entryUser(username, password);
+            user= new UserDao().entryUser(username, password);
         } catch (SQLException e) {
             e.printStackTrace();
-            return user;
         }
+        return user;
     }
 
     // 判断用户名是否重复

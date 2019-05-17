@@ -13,6 +13,17 @@ public class Index implements Serializable{
     private String btn_txt;
     private String index_bj;
 
+    @Override
+    public String toString() {
+        return "Index{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", subhead='" + subhead + '\'' +
+                ", btn_txt='" + btn_txt + '\'' +
+                ", index_bj='" + index_bj + '\'' +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }

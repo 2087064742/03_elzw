@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>了解文化</title>
@@ -33,13 +34,14 @@
                         <div class="logo">了解<span style="color: #000000">文化</span></div>
                         <nav class="main_nav">
                             <ul class="d-flex flex-row align-items-center justify-content-start">
-                                <li><a href="<%=request.getContextPath()%>/jsp/index.jsp">主页</a></li>
+                                <li><a href="<%=request.getContextPath()%>/index">主页</a></li>
                                 <li class="active"><a href="#">了解</a></li>
                                 <li><a href="<%=request.getContextPath()%>/jsp/services.jsp">展示</a></li>
                                 <li><a href="<%=request.getContextPath()%>/jsp/release.jsp">发布</a></li>
                             </ul>
                         </nav>
-                         <div class="join_button ml-auto"><a href="">加入我们！</a></div>
+                        <c:if test="${empty user}"><div class="join_button ml-auto"><a href="${pageContext.request.contextPath}/EntryRepetitionServlet?id=2">加入我们！</a></div></c:if>
+                        <c:if test="${not empty user}"><div style="margin-left:39%"><span class="label label-warning">欢迎: ${user.username}</span><p><a href="${pageContext.request.contextPath}/user?id=2">退出登录</a></p></c:if></div>
                     </div>
                 </div>
             </div>
@@ -83,7 +85,6 @@
                             <p>中国的乡土文化源远流长，而广大农村则是滋生培育乡土文化的根源和基因。改革开放以来，由于我国城市经济的飞速发展，农村经济发展相对滞后，许多乡土文化没有得到应有的发展，至此我们对中国乡土文化的了解和认识还相当有限。乡土文化是中华民族得以繁衍发展的精神寄托和智慧结晶，是区别于任何其它文明的唯一特征，是民族凝聚力和进取心的真正动因！乡土文化无论是物质的、非物质的都是不可替代的无价之宝！其中包含民俗风情、传说故事、古建遗存、名人传记、村规民约、家族族谱、传统技艺、古树名木等诸多方面。
                                 乡土文化无论是物质的、非物质的都是不可替代的无价之宝！对乡土文化的保护和延承也必须覆盖物质的、非物质的各个领域，而且保护始终是第一位的，即使要利用它发展旅游等产业也要突出“保护第一”的原则。对乡土文化最有效的保护是积极的全方位的延承。所谓“积极的延承”指的是：既要继承乡土文化传统的东西，也要适应现代生活需求创造新的东西；既要保护好原生态乡土文化，又要创造新生态乡土文化。所谓“全方位的延承”指的是：既要延承乡土文化的“文脉”，也要有选择地沿承作为乡土文化载体的“人脉”，既要延承乡土文化的物质表象（即“形似”），也要注意延承乡土文化的精神内涵。这一点在时下的中国广大农村是要特别关注并给予妥善的保护政策。</p>
                         </div>
-                        <div class="button intro_button"><a href="#">加入我们！</a></div>
                     </div>
                 </div>
 

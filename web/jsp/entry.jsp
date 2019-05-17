@@ -70,7 +70,7 @@
             <!-- Get in touch -->
             <div style=" width: 100%; text-align: center">
                 <span style="color: red; font-size: 15px">${msg}</span>
-                <form action="/EntryServlet" id="contact_form" class="contact_form" method="post">
+                <form action="/EntryServlet?id=${entry}" id="contact_form" class="contact_form" method="post">
                     <div class="row" style="margin: 0 auto;">
                         <div class="col-lg-6" style="margin-left: 500px;">
                             <div class="contact_input_container contact_input_container_1"style="width: 550px"><input type="text" class="contact_input" placeholder="用户名" name="username" ></div>
@@ -78,7 +78,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="contact_button button"style="height: 50px;">登录</button>
+                    <button type="submit"  class="contact_button button"style="height: 50px;">登录</button>
                 </form>
         </div>
 

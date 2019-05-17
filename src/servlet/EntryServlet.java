@@ -31,11 +31,26 @@ public class EntryServlet extends HttpServlet {
         }else{
             //调用service
             try {
+                String id = request.getParameter("id");
                 User user = new UserService().entryService(username,password);
                 if(user != null){
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
-                    response.sendRedirect("/jsp/index.jsp");
+                    if ("1".equals(id)){
+                        response.sendRedirect(request.getContextPath()+"/index");
+                    }
+                    if ("2".equals(id)){
+                        response.sendRedirect(request.getContextPath()+"/jsp/about.jsp");
+                    }
+
+                    if ("3".equals(id)){
+                        response.sendRedirect(request.getContextPath()+"/jsp/services.jsp");
+                    }
+
+                    if ("4".equals(id)){
+                        response.sendRedirect(request.getContextPath()+"/jsp/release.jsp");
+                    }
+
                 }else{
                     request.setAttribute("msg","用户名或者密码错误");
                     request.getRequestDispatcher("/jsp/entry.jsp").forward(request,response);
@@ -51,7 +66,5 @@ public class EntryServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        System.out.println("123");
     }
 }

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Header -->
 
 <header class="header">
@@ -16,17 +17,18 @@
                     <div class="logo">展示<span>文化</span></div>
                     <nav class="main_nav">
                         <ul class="d-flex flex-row align-items-center justify-content-start">
-                            <li><a href="${pageContext.request.contextPath}/jsp/index.jsp">主页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/index">主页</a></li>
                             <li><a href="${pageContext.request.contextPath}/jsp/about.jsp">了解</a></li>
                             <li class="active"><a href="#">展示</a></li>
                             <li><a href="${pageContext.request.contextPath}/jsp/release.jsp">发布</a></li>
                         </ul>
                     </nav>
-                    <div class="join_button ml-auto"><a href="#">加入我们！</a></div>
+                    <c:if test="${empty user}"><div class="join_button ml-auto"><a href="${pageContext.request.contextPath}/EntryRepetitionServlet?id=3">加入我们！</a></div></c:if>
+                    <c:if test="${not empty user}"><div style="margin-left:39%"><span class="label label-warning">欢迎: ${user.username}</span><p><a href="${pageContext.request.contextPath}/user?id=3">退出登录</a></p></c:if></div>
                     <div class="social header_social">
                         <ul class="d-flex flex-row align-items-center justify-content-start">
                             <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>user
                             <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>

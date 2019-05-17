@@ -1,12 +1,6 @@
-<%@ page import="java.io.Console" %><%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2019/4/11 0011
-  Time: 16:21
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="<%=path %>/styles/responsive.css">
   </head>
   <body>
-  <div class="super_container" onload="">
+  <div class="super_container">
 
     <!-- Header -->
 
@@ -33,8 +27,19 @@
           <div class="col">
             <div class="header_content d-flex flex-row align-items-center justify-content-start">
               <div class="logo"><label style="font-size:60px;font-family: 微软雅黑">乡土<span>文化</span></label></div>
-              <c:if test="${empty user}"><div class="join_button ml-auto"><a href="${pageContext.request.contextPath}/jsp/entry.jsp">加入我们！</a></div></c:if>
-              <c:if test="${not empty user}"><div style="margin-left: 65%"><span class="label label-warning">欢迎回来: ${user.username}</span><p><a href="${pageContext.request.contextPath}/user">退出登录</a></p></c:if></div>
+                <header class="header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                                    <div class="logo"><label style="font-size:60px;font-family: 微软雅黑">乡土<span>文化</span></label></div>
+                                    <c:if test="${empty user}"><div class="join_button ml-auto"><a href="${pageContext.request.contextPath}/EntryRepetitionServlet?id=1">加入我们！</a></div></c:if>
+                                    <c:if test="${not empty user}"><div style="margin-left: 65%"><span class="label label-warning">欢迎: ${user.username}</span><p><a href="${pageContext.request.contextPath}/user?id=1">退出登录</a></p></c:if></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
             </div>
           </div>
         </div>
@@ -44,12 +49,53 @@
     <!-- Home -->
 
     <div class="home">
-
       <!-- Home Slider -->
-      <div class="home_slider_container">
-        <div class="owl-carousel owl-theme home_slider">
 
-            <c:forEach items="${i}" var="p">
+      <div class="home_slider_container">
+
+        <div class="owl-carousel owl-theme home_slider">
+          <c:forEach items="${i}" var="p">
+          <!-- Slide -->
+          <div class="owl-item">
+            <div class="background_image" style="background-image:url(${pageContext.request.contextPath}${p.index_bj})"></div>
+            <div class="home_content_container">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="home_content">
+                      <div class="home_title"><h1>${p.title}</h1></div>
+                      <div class="home_text">
+                        <p>${p.subhead}</p>
+                      </div>
+
+                      <c:if test="${'乡土文化'.equals(p.title)}">
+                        <div class="button home_button">
+                          <a href="${pageContext.request.contextPath}/jsp/about.jsp">${p.btn_txt}</a>
+                        </div>
+                      </c:if>
+
+                      <c:if test="${'展示'.equals(p.title)}">
+                        <div class="button home_button">
+                          <a href="${pageContext.request.contextPath}/jsp/services.jsp">${p.btn_txt}</a>
+                        </div>
+                      </c:if>
+
+                      <c:if test="${'发布'.equals(p.title)}">
+                        <div class="button home_button">
+                          <a href="${pageContext.request.contextPath}/jsp/release.jsp">${p.btn_txt}</a>
+                        </div>
+                      </c:if>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </c:forEach>
+
+
+
+        <%--<c:forEach items="${i}" var="p">
                 <div class="owl-item">
                     <div class="background_image" style="background-image:url(${pageContext.request.contextPath}${p.index_bj})"></div>
                     <div class="home_content_container">
@@ -61,17 +107,34 @@
                                         <div class="home_text">
                                             <p>${p.subhead}</p>
                                         </div>
-                                        <div class="button home_button"><a href="${pageContext.request.contextPath}/jsp/about.jsp">${p.btn_txt}</a></div>
+
+
+                                            <c:if test="${'乡土文化'.equals(p.title)}">
+                                                <div class="button home_button">
+                                                <a href="${pageContext.request.contextPath}/jsp/about.jsp">${p.btn_txt}</a>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${'展示'.equals(p.title)}">
+                                                <div class="button home_button">
+                                                    <a href="${pageContext.request.contextPath}/jsp/services.jsp">${p.btn_txt}</a>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${'发布'.equals(p.title)}">
+                                                <div class="button home_button">
+                                                    <a href="${pageContext.request.contextPath}/jsp/release.jsp">${p.btn_txt}</a>
+                                                </div>
+                                            </c:if>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
-            </c:forEach>
-
-        <%--  <!-- Slide -->
-          <div class="owl-item">
+        </div>
+      </div>
+    </div>
+            </c:forEach>--%>
+          <%--<div class="owl-item">
             <div class="background_image" style="background-image:url(${pageContext.request.contextPath}/images/1.jpg)"></div>
             <div class="home_content_container">
               <div class="container">
@@ -130,9 +193,11 @@
             </div>
           </div>--%>
 
-
-
         </div>
+
+
+
+
 
         <!-- Home Slider Dots -->
 
@@ -143,7 +208,6 @@
             <li class="home_slider_custom_dot">03</li>
           </ul>
         </div>
-
       </div>
     </div>
 
