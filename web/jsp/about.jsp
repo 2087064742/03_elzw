@@ -41,7 +41,7 @@
                             </ul>
                         </nav>
                         <c:if test="${empty user}"><div class="join_button ml-auto"><a href="${pageContext.request.contextPath}/EntryRepetitionServlet?id=2">加入我们！</a></div></c:if>
-                        <c:if test="${not empty user}"><div style="margin-left:39%"><span class="label label-warning">欢迎: ${user.username}</span><p><a href="${pageContext.request.contextPath}/user?id=2">退出登录</a></p></c:if></div>
+                        <c:if test="${not empty user}"><div style="margin-left:39%"><span class="label label-warning">欢迎: ${user.username}</span><p><a href="${pageContext.request.contextPath}/logOffzs">退出登录</a></p></c:if></div>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                             <div class="home_title">关于文化</div>
                             <div class="breadcrumbs">
                                 <ul class="d-flex flex-row align-items-center justify-content-start">
-                                    <li><a href="<%=request.getContextPath()%>/jsp/index.jsp">Home</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/index">Home</a></li>
                                     <li>乡土文化</li>
                                 </ul>
                             </div>
@@ -76,14 +76,15 @@
     <div class="intro">
         <div class="container">
             <div class="row row-eq-height">
-
+                <c:forEach items="${a}" var="a">
                 <!-- Intro Content -->
                 <div class="col-lg-7 intro_col">
                     <div class="intro_content">
                         <div class="intro_title"><span>简介</span></div>
                         <div class="intro_text">
-                            <p>中国的乡土文化源远流长，而广大农村则是滋生培育乡土文化的根源和基因。改革开放以来，由于我国城市经济的飞速发展，农村经济发展相对滞后，许多乡土文化没有得到应有的发展，至此我们对中国乡土文化的了解和认识还相当有限。乡土文化是中华民族得以繁衍发展的精神寄托和智慧结晶，是区别于任何其它文明的唯一特征，是民族凝聚力和进取心的真正动因！乡土文化无论是物质的、非物质的都是不可替代的无价之宝！其中包含民俗风情、传说故事、古建遗存、名人传记、村规民约、家族族谱、传统技艺、古树名木等诸多方面。
-                                乡土文化无论是物质的、非物质的都是不可替代的无价之宝！对乡土文化的保护和延承也必须覆盖物质的、非物质的各个领域，而且保护始终是第一位的，即使要利用它发展旅游等产业也要突出“保护第一”的原则。对乡土文化最有效的保护是积极的全方位的延承。所谓“积极的延承”指的是：既要继承乡土文化传统的东西，也要适应现代生活需求创造新的东西；既要保护好原生态乡土文化，又要创造新生态乡土文化。所谓“全方位的延承”指的是：既要延承乡土文化的“文脉”，也要有选择地沿承作为乡土文化载体的“人脉”，既要延承乡土文化的物质表象（即“形似”），也要注意延承乡土文化的精神内涵。这一点在时下的中国广大农村是要特别关注并给予妥善的保护政策。</p>
+                            <p>
+                                ${a.introduce}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -122,29 +123,31 @@
                     <div class="section_title_container text-center">
                         <div class="section_title"><h1>文化现状</h1></div>
                         <div class="section_text ml-auto mr-auto">
-                            <p>中国乡土文化实在是太博大、太久远、太丰富了！尚未引起人的关注或熟视无睹的领域也实在太广阔，而相当多的乡土文化遗存（包括物质的、非物质文化遗产）已经或正面临着被摧毁、被遗忘的绝境。
-                                不少有识之士的呼吁似乎起的作用微乎其微!急功近利的建设性破坏行为仍在大行其道，畅通无阻!乡土文化仍旧无法摆脱弱势文化的地位!如何有效遏制这一事态的发展，关系如何保住我们乡土文化的根基的大问题</p>
+                            <p>
+                                ${a.situation}
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row team_row">
 
+            <div class="row team_row">
+                <c:forEach items="${b}" var="b">
                 <!-- Team Item -->
                 <div class="col-xl-3 col-md-6 team_col">
                     <div class="team_item">
-                        <div class="team_image"><img src="<%=request.getContextPath()%>/images/10.jpg" style="width: 510px; height: 250px;"></div>
+                        <div class="team_image"><img src="<%=request.getContextPath()%>${b.image}" style="width: 510px; height: 250px;"></div>
                         <div class="team_content text-center">
-                            <div class="team_name"><a href="#">西湖区转塘街道</a></div>
-                            <div class="team_title">外桐坞村</div>
+                            <div class="team_name"><a href="#">${b.area}</a></div>
+                            <div class="team_title">${b.village}</div>
                             <div class="team_text">
-                                <p>西湖区外桐坞村文化礼堂是集朱德纪念室、文化讲堂、聚贤堂、民俗文化馆、陶艺制作室、红色长廊等为一体，具有旅游休闲、文化体验等诸多功能的综合性文化礼堂。</p>
+                                <p>${b.introduce}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Team Item -->
+                </c:forEach>
+                <%--<!-- Team Item -->
                 <div class="col-xl-3 col-md-6 team_col">
                     <div class="team_item">
                         <div class="team_image"><img src="<%=request.getContextPath()%>/images/11.jpg" style="width: 510px; height: 250px"></div>
@@ -166,7 +169,7 @@
                             <div class="team_name"><a href="#">萧山区义桥镇</a></div>
                             <div class="team_title">昇光村</div>
                             <div class="team_text">
-                                <p>杭州东方文化园位于萧山义桥杨岐山南麓，园内以周易八卦布局，儒、释、道三家同构建筑，2728米彩绘艺术长廊贯穿全园八大景区）。</p>
+                                <p>杭州东方文化园位于萧山义桥杨岐山南麓，园内以周易八卦布局，儒、释、道三家同构建筑，2728米彩绘艺术长廊贯穿全园八大景区。</p>
                             </div>
                         </div>
                     </div>
@@ -184,7 +187,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--%>
+
 
             </div>
         </div>
@@ -209,8 +213,7 @@
                                 <div class="accordion d-flex flex-row align-items-center active"><div>建立正确的“乡土文化观”</div></div>
                                 <div class="accordion_panel">
                                     <div>
-                                        <p>乡土文化是中华民族得以繁衍发展的精神寄托和智慧结晶，是区别于任何其它文明的唯一特征，是民族凝聚力和进取心的真正动因！
-                                            乡土文化无论是物质的、非物质的都是不可替代的无价之宝！对乡土文化的保护和延承也必须覆盖物质的、非物质的各个领域，而且保护始终是第一位的，即使要利用它发展旅游等产业也要突出“保护第一”的原则。对乡土文化最有效的保护是积极的全方位的延承。所谓“积极的延承”指的是：既要继承乡土文化传统的东西，也要适应现代生活需求创造新的东西；既要保护好原生态乡土文化，又要创造新生态乡土文化。所谓“全方位的延承”指的是：既要延承乡土文化的“文脉”，也要有选择地沿承作为乡土文化载体的“人脉”，既要延承乡土文化的物质表象（即“形似”），也要注意延承乡土文化的精神内涵。（即“神似”）。特别不要忽视某些宗教及家族文化因素在乡土文化中的重要作用，其旺盛的生命力、感召力成为维系人们世代延续和谐共生、善待苍生的重要精神支柱和心灵托付。这一点在时下的中国广大农村是要特别关注并给予妥善的乡土保护政策。</p>
+                                        <p>${a.propose1}</p>
                                     </div>
                                 </div>
                             </div>
@@ -220,8 +223,9 @@
                                 <div class="accordion d-flex flex-row align-items-center"><div>加强全民的乡土文化保护意识</div></div>
                                 <div class="accordion_panel">
                                     <div>
-                                        <p>除了从事乡土文化保护的专业部门、专家、规划工作者等，要把普及乡土文化保护与延承的教育作为一项全民素质教育内容，常抓不懈。特别是广大农民和第一线的基层干部更要进行此项教育，某种程度上失去乡土文化比失去土地更严重，等于是断了农村的“根”！乡土文化渊远流传，正如央视7套的纪录节目《乡土》所传递的理念：“乡而不俗，土而不粗。”国内大中小企业，亦有责任去宣扬乡土文化，正如云南乡土公社这一基于乡土文化而建立的有机农产品网站。
-                                            要在国家《文物保护法》实施的同时，及时研究制定国家或地方《乡土文化保护法》或法规，作为规范此类行为的法律依据</p>
+                                        <p>
+                                        ${a.propose2}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +235,7 @@
                                 <div class="accordion d-flex flex-row align-items-center"><div>专门编制乡土文化保护规划</div></div>
                                 <div class="accordion_panel">
                                     <div>
-                                        <p>不论是否列入历史文化名村，在编制新农村规划中都应有乡土文化保护专项，其内容可涉及历史沿革、民俗风情、传说故事、古建遗存、名人传记、村规民约、家族族谱、传统技艺、古树名木等诸多方面。对未有效进行此项规划工作的新农村规划可实行“一票否决制”。历史文化名村除了要进行传统建筑风貌保护外，还应挖掘其精神文化内涵，进行深层次的非物质文化遗产的保护与延承。</p>
+                                        <p>${a.propose3}</p>
                                     </div>
                                 </div>
                             </div>
@@ -257,11 +261,14 @@
             </div>
         </div>
     </div>
-
+    </div>
+        </div>
+    </div>
+</div>
+</c:forEach>
     <!-- Footer -->
 
 
-</div>
 
 
 <script src="<%=path %>/js/jquery-3.2.1.min.js"></script>

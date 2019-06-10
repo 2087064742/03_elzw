@@ -18,7 +18,7 @@
                     <nav class="main_nav">
                         <ul class="d-flex flex-row align-items-center justify-content-start">
                             <li><a href="${pageContext.request.contextPath}/index">主页</a></li>
-                            <li><a href="${pageContext.request.contextPath}/jsp/about.jsp">了解</a></li>
+                            <li><a href="${pageContext.request.contextPath}/about">了解</a></li>
                             <li class="active"><a href="#">展示</a></li>
                             <li><a href="${pageContext.request.contextPath}/jsp/release.jsp">发布</a></li>
                         </ul>
@@ -53,7 +53,7 @@
                         <div class="home_title">展示</div>
                         <div class="breadcrumbs">
                             <ul class="d-flex flex-row align-items-center justify-content-start">
-                                <li><a href="${pageContext.request.contextPath}/jsp/index.jsp">Home</a></li>
+                                <li><a href="${pageContext.request.contextPath}/index">Home</a></li>
                                 <li>乡土文化</li>
                             </ul>
                         </div>

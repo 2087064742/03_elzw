@@ -3,6 +3,7 @@ package servlet;
 import domain.Index;
 import service.IndexService;
 
+import javax.naming.Context;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,17 +23,21 @@ public class IndexServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        IndexService indexService=new IndexService();
 
-        List<Index> index=null;
 
         try {
-            index=indexService.index();
-        } catch (Exception e) {
+            IndexService indexService = new IndexService();
+            List<Index> index = null;
+            String user = (String) request.getAttribute("user");
+            System.out.println(user);
 
+            index = indexService.index();
+//            System.out.println("user:" + result);
+            request.setAttribute("i", index);
+            request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        request.setAttribute("i",index);
-        request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
+
     }
 }

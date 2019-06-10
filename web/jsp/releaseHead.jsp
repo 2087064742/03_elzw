@@ -18,13 +18,13 @@
                     <nav class="main_nav">
                         <ul class="d-flex flex-row align-items-center justify-content-start">
                             <li><a href="${pageContext.request.contextPath}/index">主页</a></li>
-                            <li><a href="${pageContext.request.contextPath}/jsp/about.jsp">了解</a></li>
+                            <li><a href="${pageContext.request.contextPath}/about">了解</a></li>
                             <li><a href="${pageContext.request.contextPath}/jsp/services.jsp">展示</a></li>
                             <li class="active"><a href="#">发布</a></li>
                         </ul>
                     </nav>
                     <c:if test="${empty user}"><div class="join_button ml-auto"><a href="${pageContext.request.contextPath}/EntryRepetitionServlet?id=4">加入我们！</a></div></c:if>
-                    <c:if test="${not empty user}"><div style="margin-left:39%"><span class="label label-warning">欢迎: ${user.username}</span><p><a href="${pageContext.request.contextPath}/user?id=4">退出登录</a></p></c:if></div>
+                    <c:if test="${not empty user}"><div style="margin-left:39%"><span class="label label-warning">欢迎: ${user.username}</span><p><a href="${pageContext.request.contextPath}/logOffsy">退出登录</a></p></c:if></div>
                     <div class="social header_social">
                         <ul class="d-flex flex-row align-items-center justify-content-start">
                             <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
@@ -53,7 +53,7 @@
                         <div class="home_title">发布</div>
                         <div class="breadcrumbs">
                             <ul class="d-flex flex-row align-items-center justify-content-start">
-                                <li><a href="${pageContext.request.contextPath}/jsp/index.jsp">Home</a></li>
+                                <li><a href="${pageContext.request.contextPath}/index">Home</a></li>
                                 <li>乡土文化</li>
                             </ul>
                         </div>

@@ -32,4 +32,10 @@ public class UserService {
         }
         return user;
     }
+
+    public boolean user(String username, String password) throws SQLException {
+        User user = new UserDao().entryUser(username, password);
+
+        return user != null;
+    }
 }

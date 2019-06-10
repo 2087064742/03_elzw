@@ -2,7 +2,6 @@ package dao;
 
 import domain.Index;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import utils.DataSourceUtils;
 

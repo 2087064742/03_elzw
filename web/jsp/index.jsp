@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -70,7 +69,7 @@
 
                       <c:if test="${'乡土文化'.equals(p.title)}">
                         <div class="button home_button">
-                          <a href="${pageContext.request.contextPath}/jsp/about.jsp">${p.btn_txt}</a>
+                          <a href="${pageContext.request.contextPath}/about">${p.btn_txt}</a>
                         </div>
                       </c:if>
 
@@ -80,18 +79,29 @@
                         </div>
                       </c:if>
 
-                      <c:if test="${'发布'.equals(p.title)}">
-                        <div class="button home_button">
-                          <a href="${pageContext.request.contextPath}/jsp/release.jsp">${p.btn_txt}</a>
-                        </div>
-                      </c:if>
+
+                        <c:forEach items="user" var="e">
+                            <c:if test="${'发布'.equals(p.title)}">
+                                <c:if test="${empty user}">
+                                    <div class="button home_button">
+                                        <a href="${pageContext.request.contextPath}/EntryRepetitionServlet?id=5">${p.btn_txt}</a>
+                                    </div>
+                                </c:if>
+                                <c:if test="${not empty user}">
+                                    <div class="button home_button">
+                                        <a href="${pageContext.request.contextPath}/jsp/releasewh.jsp">${p.btn_txt}</a>
+                                    </div>
+                                </c:if>
+                            </c:if>
+                        </c:forEach>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          </c:forEach>
+            </c:forEach>
+
 
 
 
@@ -222,5 +232,6 @@
   <script src="<%=path %>/plugins/easing/easing.js"></script>
   <script src="<%=path %>/plugins/parallax-js-master/parallax.min.js"></script>
   <script src="<%=path %>/js/custom.js"></script>
+
   </body>
 </html>

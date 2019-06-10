@@ -34,4 +34,5 @@ public class UserDao {
 
         return (User)qr.query(sql, new BeanHandler(User.class), username, password);
     }
+
 }

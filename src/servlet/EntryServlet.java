@@ -36,11 +36,12 @@ public class EntryServlet extends HttpServlet {
                 if(user != null){
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
+                    //request.setAttribute("user",user);
                     if ("1".equals(id)){
                         response.sendRedirect(request.getContextPath()+"/index");
                     }
                     if ("2".equals(id)){
-                        response.sendRedirect(request.getContextPath()+"/jsp/about.jsp");
+                        response.sendRedirect(request.getContextPath()+"/about");
                     }
 
                     if ("3".equals(id)){
@@ -49,6 +50,9 @@ public class EntryServlet extends HttpServlet {
 
                     if ("4".equals(id)){
                         response.sendRedirect(request.getContextPath()+"/jsp/release.jsp");
+                    }
+                    if ("5".equals(id)){
+                        response.sendRedirect(request.getContextPath()+"jsp/releasewh.jsp");
                     }
 
                 }else{
